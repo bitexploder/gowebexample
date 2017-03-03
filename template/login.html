@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <div>
+            <div style="color:red;">
+                <ul>
+	        {{range $idx, $flash := .Flashes}}
+		    <li>{{ $flash }}</li>
+	        {{end}}
+                </ul>
+            </div>
+            <form action="/login" method="POST">
+                Username:<br />  
+                <input type="text" name="username" value=""> <br />
+                Password: <br />
+                <input type="password" name="password" value=""> <br />
+                <br />
+                <input type="submit" value="Login" >
+            </form>
+        </div>
+    </body>
+</html>

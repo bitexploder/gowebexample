@@ -1,0 +1,21 @@
+<html>
+    <style>
+     div {
+         margin-top:5px;
+     }
+    </style>
+    <body>
+        <div><a href="/">Go Home</a></div>
+        <form action="/edit/{{ .ID }}" method="POST">
+            <div><strong>Name</strong></div>
+            <div><input type="text" name="name" value="{{ .Name }}" size="64"></div>
+            <div><strong>Email</strong></div>
+            <div><input type="text" name="email" value="{{ .Email }}" size="64" ></div>
+            <div><strong>Username</strong></div>
+            <div><input type="text" name="username" value="{{ .Username }}" size="64" ></div>
+            
+            <div>&nbsp;</div>
+            <div><input type="submit"></div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+    <style>
+     tr:nth-child(even) {
+         background: #DDD;
+     }
+     td {
+         padding: 3px;
+     }
+
+     tr.header td {
+         font-weight:bold;
+     }
+    </style>
+    <body>
+        <div><a href="/">Go Home</a></div>
+        <div><strong>User Count:</strong> {{ . | len }} </div>
+        <div><a href="/edit/0">Add User</a> </div>
+        
+        <table>
+            <tr class="header">
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    Username
+                </td>
+                <td>
+                    Created
+                </td>
+                <td>
+                    Delete
+                </td>                
+            </tr>
+            {{ range $key := . }}
+            <tr>
+                <td>
+                    <a href="/edit/{{ $key.ID }}">Edit</a>
+                </td>
+                <td>
+                    [{{ $key.ID}}] {{ $key.Name }}
+                </td>
+                <td>
+                    {{ $key.Email }}
+                </td>
+                <td>
+                    {{ $key.Username }} 
+                </td>
+                <td>
+                    {{ $key.Created }}
+                </td>
+                <td>
+                    <a href="/edit/{{$key.ID}}/delete" target="_new">DELETE</a>
+                </td>                
+            </tr>
+            {{ end }}
+        </table>
+    </body>
+</html>
