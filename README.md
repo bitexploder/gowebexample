@@ -45,6 +45,7 @@ Cd to the `gowebexample` directory (where `static` and `template` dirs are)
 Then run:
 
 `gowe-user -username admin -password admin -name First Last`
+
 `gowe`
 
 Now visit:
