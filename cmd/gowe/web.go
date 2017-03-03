@@ -28,14 +28,14 @@ var store = sessions.NewCookieStore(
 func loadTmpl(path string, data interface{}) (string, error) {
 	tmpl, err := template.ParseFiles(path)
 	if err != nil {
-		fmt.Errorf("Error parsing template: %s", path)
+		log.Errorf("Error parsing template: %s", path)
 		return "", err
 	}
 
 	var buf bytes.Buffer
 	err = tmpl.Execute(&buf, data)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 
 	return buf.String(), err
@@ -53,7 +53,7 @@ func ListUsersHandler(config Config) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		users, err := model.GetUsers(Db)
 		if err != nil {
-			fmt.Fprintf(w, "err: %+v\n")
+			log.Fprintf(w, "err: %+v\n")
 			return
 		}
 
@@ -107,7 +107,7 @@ func EditUserHandler(config Config) http.HandlerFunc {
 
 		s, err := loadTmpl(config.TemplateDir+"/edit.html", user)
 		if err != nil {
-			fmt.Printf("error loading template: %s\n", err)
+			log.Printf("error loading template: %s\n", err)
 			http.Error(w, err.Error(), 500)
 			return
 		}
@@ -146,7 +146,7 @@ func LoginHandler(config Config) http.HandlerFunc {
 			params.Flashes = session.Flashes()
 			s, err := loadTmpl(loginTmpl, params)
 			if err != nil {
-				fmt.Printf("error loading template: %s\n", err)
+				log.Printf("error loading template: %s\n", err)
 				http.Error(w, err.Error(), 500)
 				return
 			}
@@ -276,6 +276,7 @@ func Web(config Config) {
 
 	h := Use(router.ServeHTTP, Logger, ContextManager)
 
+	log.Printf("Listening on %s\n", config.Listen)
 	http.ListenAndServe(config.Listen, h)
 }
 
