@@ -1,3 +1,11 @@
+# If you had not figured it out...
+
+This is a pretty old project and you should use different and better web frameworks and techniques. 
+
+Gorilla is not maintained any more. This project still showcases the Go style of light weight, no fluff web applications. If you are tired of heavy frameworks for small projects and microservices, Go is still pretty rad and I still enjoy building little web apps with it. You need some more discipline and abstraction on larger more complex web apps, in my opinion, but Go still lets you naturally evolve and lego that together. 
+
+July 2024
+
 # An example Go web application
 
 You have been hacking on Go and want to use it for a web application. You want a simple, opinionated, idiomatic (mostly!), and easy to understand Go application that has batteries included: Authentication, sessions, databases, middleware, etc. You are tired of piecing together things from various snippets and poring over other Go code bases. Look no further!
